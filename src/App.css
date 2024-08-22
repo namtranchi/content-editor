@@ -1,22 +1,26 @@
 html {
-  background-color: white;
+	background-color: white;
 }
 #root {
-  padding: 1rem;
-  background-color: white;
+	padding: 1rem;
+	background-color: white;
 }
 
 /* Tiny MCE */
 .wrap-editor {
-  width: calc(100vw - 32px);
-  height: calc(100vh - 32px);
+	width: calc(100vw - 32px);
+	height: calc(100vh - 32px);
 }
 .mce-content-body {
-  background-color: white;
-  width: inherit;
-  height: inherit;
+	background-color: white;
+	width: inherit;
+	height: inherit;
 }
 
 .tox-tinymce {
-  border-radius: 8px !important;
+	border-radius: 8px !important;
+}
+
+*:focus-visible {
+	outline: none;
 }

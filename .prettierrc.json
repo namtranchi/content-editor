@@ -1,0 +1,30 @@
+{
+  "printWidth": 80,
+  "endOfLine": "auto",
+  "tabWidth": 2,
+  "indentStyle": "space",
+  "useTabs": true,
+  "arrowParens": "avoid",
+  "bracketSameLine": false,
+  "trailingComma": "all",
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "importOrder": [
+    "^react(.*)",
+    "<THIRD_PARTY_MODULES>",
+    "@/screens",
+    "@/components/(.*)",
+    "@/state-management/(.*)",
+    "@/services/(.*)",
+    "@/react-query",
+    "@/types/(.*)",
+    "@/utils/(.*)",
+    "@/theme",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "extends": [
+    "plugin:prettier/recommended"
+  ]
+}
