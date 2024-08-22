@@ -1,14 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ContentEditor from "@/components/ContentEditor";
-import { Header, Layout } from "@/components/layout";
+import { Layout } from "@/components/layout";
+import { Todo } from "@/components/todo";
 
 import "./App.css";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Layout>main content</Layout>,
+		element: (
+			<Layout>
+				<Todo />
+			</Layout>
+		),
 	},
 	{
 		path: "/content-editor",
