@@ -1,15 +1,30 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import ContentEditor from "@/components/ContentEditor";
-import { Header } from "@/components/layout";
+import { Layout } from "@/components/layout";
+import { Todo } from "@/components/todo";
 
 import "./App.css";
 
-function App() {
-	return (
-		<div className="wrap-editor">
-			<Header />
-			<ContentEditor />
-		</div>
-	);
-}
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: (
+			<Layout>
+				<Todo />
+			</Layout>
+		),
+	},
+	{
+		path: "/content-editor",
+		element: (
+			<Layout>
+				<ContentEditor />
+			</Layout>
+		),
+	},
+]);
 
-export default App;
+export default function App() {
+	return <RouterProvider router={router} />;
+}

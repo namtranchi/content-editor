@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Editor } from "@tinymce/tinymce-react";
 import { Editor as TinyMCEEditor } from "tinymce";
 
@@ -46,6 +48,10 @@ export interface IProps {
 // export default function TinyMCE(props: IProps) {
 const TinyMCE = (props: IProps) => {
 	const { value, onEditorChange, disabled } = props;
+
+	useEffect(() => {
+		document.title = "Content Editor";
+	}, []);
 
 	const handleOnEditorChange = (newValue: string, _editor: TinyMCEEditor) => {
 		onEditorChange(newValue);
