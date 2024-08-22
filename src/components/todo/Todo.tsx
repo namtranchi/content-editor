@@ -9,6 +9,8 @@ import { ITodo } from "./index.d";
 export default function Todo() {
 	const [list, setList] = useState<ITodo[]>([]);
 
+	console.log("💊 ~ list:", list);
+
 	useEffect(() => {
 		document.title = "Todo App";
 	}, []);
@@ -17,6 +19,7 @@ export default function Todo() {
 		setList(prev => [
 			{
 				id: uuidV4(),
+				isCompleted: false,
 				todo: todoText,
 				createdAt: Date.now(),
 				updatedAt: Date.now(),
@@ -26,7 +29,38 @@ export default function Todo() {
 	};
 
 	const handleDelete = (todo: ITodo) => {
-		setList(prev => prev.filter(item => item.id !== todo.id));
+		setList(prev => prev.filter(item => item.id != todo.id));
+	};
+
+	const handleEdit = (todo: ITodo) => {
+		setList(prev => {
+			const cloned = [...prev];
+			const idx = cloned.findIndex(item => item.id == todo.id);
+
+			cloned[idx] = { ...cloned[idx], todo: todo.todo, updatedAt: Date.now() };
+			return cloned;
+		});
+	};
+
+	const handleComplete = (todo: ITodo) => {
+		setList(prev => {
+			const cloned = [...prev];
+			const idx = cloned.findIndex(item => item.id == todo.id);
+
+			cloned[idx] = {
+				...cloned[idx],
+				isCompleted: !cloned[idx].isCompleted,
+				updatedAt: Date.now(),
+			};
+
+			return cloned;
+		});
+
+		// let listFormat = [...list];
+		// const idx = list.findIndex(item => item.id == todo.id);
+		// listFormat[idx].isCompleted = true;
+
+		// setList(listFormat);
 	};
 
 	return (
@@ -56,6 +90,8 @@ export default function Todo() {
 							key={item.id}
 							{...item}
 							onDelete={() => handleDelete(item)}
+							onEdit={text => handleEdit({ ...item, todo: text })}
+							onComplete={() => handleComplete(item)}
 						/>
 					))}
 
